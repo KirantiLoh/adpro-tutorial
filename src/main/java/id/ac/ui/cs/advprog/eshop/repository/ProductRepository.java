@@ -1,6 +1,7 @@
 package id.ac.ui.cs.advprog.eshop.repository;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import id.ac.ui.cs.advprog.eshop.model.Product;
@@ -13,7 +14,7 @@ public class ProductRepository {
         return product;
     }
 
-    public List<Product> findAll() {
-        return productData;
+    public Iterator<Product> findAll() {
+        return productData.iterator();
     }
 }
