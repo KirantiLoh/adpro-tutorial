@@ -55,4 +55,31 @@ class ProductRepositoryTest {
         assertEquals("P370", products.next().getProductId());
         assertFalse(products.hasNext());
     }
+
+    @Test
+    void editProductTest() {
+        Product product = new Product();
+        product.setProductId("P369");
+        product.setProductName("Laptop");
+        product.setProductQuantity(1);
+        productRepository.create(product);
+        Product foundProduct = productRepository.findById("P369");
+        Product intendedProduct = new Product();
+        intendedProduct.setProductQuantity(2);
+        productRepository.update(foundProduct.getProductId(), intendedProduct);
+        Product editedProduct = productRepository.findById("P369");
+        assertEquals(2, editedProduct.getProductQuantity());
+    }
+
+    @Test
+    void deleteProductTest() {
+        Product product = new Product();
+        product.setProductId("P369");
+        product.setProductName("Laptop");
+        product.setProductQuantity(1);
+        productRepository.create(product);
+        productRepository.delete("P369");
+        Product foundProduct = productRepository.findById("P369");
+        assertEquals(null, foundProduct);
+    }
 }
