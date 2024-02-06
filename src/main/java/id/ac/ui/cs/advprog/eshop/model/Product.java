@@ -9,4 +9,13 @@ public class Product {
     private String productId;
     private String productName;
     private int productQuantity;
+
+    public Product() {
+        this.productId = "P" + (int) (Math.random() * 1000);
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
 }
