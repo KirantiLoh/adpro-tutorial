@@ -51,12 +51,8 @@ public class ProductController {
 
     @PostMapping("/edit/{id}")
     public String editProductPost(@PathVariable("id") String id, @ModelAttribute Product product, Model model) {
-        Product initialProduct = service.findById(id);
-        if (initialProduct == null || !product.getProductId().equals(initialProduct.getProductId())) {
-            return "redirect:list";
-        }
-        service.update(product);
-        return "redirect:list";
+        service.update(id, product);
+        return "redirect:../list";
     }
 
     @DeleteMapping("/delete/{id}")
