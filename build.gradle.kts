@@ -1,5 +1,6 @@
 plugins {
 	java
+	jacoco
 	id("org.springframework.boot") version "3.2.2"
 	id("io.spring.dependency-management") version "1.1.4"
 }
@@ -33,12 +34,12 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	annotationProcessor("org.projectlombok:lombok")
-	implementation("org.springframework.boot:spring-boot-starter-test")
-	implementation("org.seleniumhq.selenium:selenium-java:$seleniumJavaVersion")
-	implementation("io.github.bonigarcia:webdrivermanager:$webdrivermanagerVersion")
-	implementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
-	implementation("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
-	implementation("io.github.bonigarcia:selenium-jupiter:$seleniumJupiterVersion")
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.seleniumhq.selenium:selenium-java:$seleniumJavaVersion")
+	testImplementation("io.github.bonigarcia:webdrivermanager:$webdrivermanagerVersion")
+	testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
+	testImplementation("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
+	testImplementation("io.github.bonigarcia:selenium-jupiter:$seleniumJupiterVersion")
 }
 
 tasks.withType<Test> {
@@ -65,4 +66,15 @@ tasks.register<Test>("functionalTest") {
 
 tasks.withType<Test>().configureEach {
 	useJUnitPlatform()
+}
+
+tasks.test {
+	filter {
+		excludeTestsMatching("*FunctionalTest")
+	}
+	finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+	dependsOn(tasks.test)
 }
