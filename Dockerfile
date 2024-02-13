@@ -16,7 +16,7 @@ RUN addgroup -g ${USER_GID} ${USERNAME} && \
 
 USER ${USERNAME}
 WORKDIR /opt/advpro
-EXPOSE 8080
+EXPOSE 8000
 COPY --from=builder --chown=${USER_UID}:${USER_GID} /src/advpro/build/libs/*.jar app.jar
 
 
