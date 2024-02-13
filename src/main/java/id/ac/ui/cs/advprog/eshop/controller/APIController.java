@@ -11,7 +11,7 @@ public class APIController {
 
     @GetMapping("/")
     public String createProduct(Model model) {
-        return "homePage";
+        return "HomePage";
     }
 
 }
