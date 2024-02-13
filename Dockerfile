@@ -2,7 +2,7 @@ FROM docker.io/library/eclipse-temurin:21-jdk-alpine AS builder
 
 WORKDIR /src/advpro
 COPY . .
-CMD [ "chmod", "+x", "./gradlew" ]
+RUN chmod +x ./gradlew
 RUN ./gradlew clean bootJar
 
 FROM docker.io/library/eclipse-temurin:21-jre-alpine AS runner
@@ -16,9 +16,9 @@ RUN addgroup -g ${USER_GID} ${USERNAME} && \
 
 USER ${USERNAME}
 WORKDIR /opt/advpro
+EXPOSE 8080
 COPY --from=builder --chown=${USER_UID}:${USER_GID} /src/advpro/build/libs/*.jar app.jar
 
-EXPOSE 8080
 
 ENTRYPOINT [ "java" ]
 CMD [ "-jar", "app.jar" ]
