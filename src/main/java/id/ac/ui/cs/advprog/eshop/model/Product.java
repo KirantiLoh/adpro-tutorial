@@ -14,6 +14,12 @@ public class Product {
         this.productId = "P" + (int) (Math.random() * 1000);
     }
 
+    public Product(String id, String productName, int productQuantity) {
+        this.productId = id;
+        this.productName = productName;
+        this.productQuantity = productQuantity;
+    }
+
     public String getProductId() {
         return productId;
     }

@@ -13,3 +13,6 @@ Dalam aspek secure coding, terdapat beberapa *security measures* yang saya terap
 
 1. Setelah membuat unit test pada tutorial ini, saya merasa bahwa terlalu banyak unit test tidak terlalu baik, karena dengan code coverage 100% pun tak menjamin nihilnya bug atau error pada program. Sehingga menurut saya membuat test case yang banyak pada suatu class justru *counterproductive*.
 2. Terdapat kemungkinan kualitas kode akan menurun, hal ini disebabkan oleh adanya logika yang sama digunakan ulang, tidak menerapkan prinsip DRY (Don't Repeat Yourself). Cara yang dapat digunakan untuk menghindari penurunan kualitas adalah membuat test yang menggabungkan beberapa fitur / fungsi suatu class, sehingga jumlah test case yang dibuat menurun dan tidak ada kode yang terulang-ulang.
+
+## Reflection 3
+1. 
