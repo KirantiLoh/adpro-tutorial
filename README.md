@@ -17,3 +17,20 @@ Dalam aspek secure coding, terdapat beberapa *security measures* yang saya terap
 ## Reflection 3
 1. Code quality issue yang saya alami adalah adanya penggunaan fungsi yang tidak terlalu sesuai, contohnya penggunaan fungsi assert yang tidak optimal. Beberapa tempat saya menggunakan `assertEquals(null, product)`, padahal lebih baik menggunakan `assertNull(product)`. Solusinya adalah mengubah function tersebut untuk menggunakan function yang benar.
 2. Menurut saya implementasi CI/CD workflows yang ada sekarang sudah mencakup semua definisi dari CI dan CD. Bagian CI yang diterapkan sudah memenuhi standar CI, karena setiap adanya *Pull Request* akan menjalankan *Github Action* yang bertugas untuk memastikan tak ada code yang tidak sesuai standar. Bagian CD yang diterapkan sudah memenuhi standar CD, karena setiap kali adanya perubahan pada branch `main` akan terjadi *deployment* ulang. Sehingga dengan alasan yang telah disebutkan sebelumnya, saya rasa implementasi sekarang sudah memenuhi standar CI CD.
+
+## Reflection 
+1. Berikut adalah list dari prinsip-prinsip dari SOLID yang saya terapkan
+   1. Single Responsibilty Principle:
+      1. File `ProductController.java` awalnya berisi 2 class controller yang berbeda, hal ini bertolak-belakang dengan prinsip Single Responsibilty. SRP menyatakan bahwa suatu class harus men. Dengan demikian, saya membuat file baru yang bernama `CarController.java` untuk menyimpan class `CarController`.
+   2. Dependency Inversion: 
+      1. Class `CarController` awalnya mempunyai *dependency* kepada class `CarServiceImpl`. Menurut prinsip Dependency Inversion, seharusnya class yang ada *depend* / bergantung kepada *interface* ataupun *abstract class*, bukan bergantung langsung kepada class konkrit. Dengan demikian, saya mengubah class `CarController` untuk bergantung kepada interface `CarService`.
+2. Kelebihan dari masing-masing prinsip pada SOLID adalah:
+   1. Single Responsibilty Principle: Lebih mudah untuk dipahami, dimodifikasi, dan diuji tanpa mempengaruhi bagian lain.
+   2. Open-Closed Principle: Meningkatkan code robustness dengan memungkinkan adaptasi yang lebih mudah kepada fitur baru tanpa mengubah code yang sudah ada.
+   3. Liskov Substitution: Memungkinkan code reuse serta memudahkan pemahaman atas codebase.
+   4. Interface Segregation: Mencegah adanya interface yang *bloated* dan menurunkan kemungkinan adanya code duplication.
+   5. Dependency Inversion: Membuat relasi antar class *loosely coupled* sehingga perubahan pada 1 class tidak mengubah fungsi apapun pada class lainnya.
+3. Kekurangan dari tidak menerapkan prinsip SOLID adalah:
+   1. Menggabungkan tanggungjawab antar kelas akan menyebabkan sulitnya codebase untuk di-*maintain*.
+   2. Dengan tidak menerapkan Interface Segregation, memungkinkan code yang sama diulang berkali-kali (code duplication).
+   3. Minimnya *reusability* karena semua bagian saling bergantungan / *tightly coupled* sehingga memanjangkan waktu pengembangan aplikasi.
