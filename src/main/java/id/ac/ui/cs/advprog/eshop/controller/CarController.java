@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import id.ac.ui.cs.advprog.eshop.model.Car;
-import id.ac.ui.cs.advprog.eshop.service.CarServiceImpl;
+import id.ac.ui.cs.advprog.eshop.service.CarService;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ import java.util.List;
 @RequestMapping("/car")
 public class CarController {
     @Autowired
-    private CarServiceImpl service;
+    private CarService service;
 
     @GetMapping("/createCar")
     public String createCar(Model model) {
