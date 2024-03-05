@@ -3,6 +3,7 @@ package id.ac.ui.cs.advprog.eshop.model;
 import java.util.Arrays;
 import java.util.List;
 
+import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -32,9 +33,8 @@ public class Order {
     }
 
     public void setStatus(String status) {
-        String[] validStatus = { "WAITING_PAYMENT", "FAILED", "SUCCESS", "CANCELLED" };
 
-        if (Arrays.stream(validStatus).noneMatch(status::equals)) {
+        if (!OrderStatus.contains(status)) {
             throw new IllegalArgumentException();
         } else {
             this.status = status;
