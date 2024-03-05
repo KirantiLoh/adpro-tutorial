@@ -16,7 +16,7 @@ import id.ac.ui.cs.advprog.eshop.repository.ProductRepository;
 class ProductServiceTest {
 
     @InjectMocks
-    ProductServiceImpl productService = new ProductServiceImpl(new ProductRepository());
+    ProductService productService = new ProductServiceImpl(new ProductRepository());
 
     @BeforeEach
     void setUp() {

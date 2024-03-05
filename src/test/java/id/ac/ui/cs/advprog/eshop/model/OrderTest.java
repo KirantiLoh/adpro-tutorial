@@ -7,11 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class OrderTest {
-    private List<Product> products;
+    List<Product> products;
 
+    @BeforeEach
     void setup() {
         this.products = new ArrayList<>();
         Product product1 = new Product();
