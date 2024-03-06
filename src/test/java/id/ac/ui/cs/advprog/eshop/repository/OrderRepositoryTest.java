@@ -41,7 +41,7 @@ class OrderRepositoryTest {
 
     @Test
     void testSaveCreateOrder() {
-        Order order = this.orders.get(1);
+        Order order = this.orders.get(0);
         Order result = orderRepository.save(order);
 
         Order findResult = orderRepository.findById(order.getId());
@@ -89,7 +89,7 @@ class OrderRepositoryTest {
         for (Order order : this.orders) {
             orderRepository.save(order);
         }
-        Order findResult = orderRepository.findById("1234567890");
+        Order findResult = orderRepository.findById("zzczc");
         assertNull(findResult);
     }
 

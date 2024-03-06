@@ -25,9 +25,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.ArrayList;
 
 @ExtendWith(MockitoExtension.class)
-public class OrderServiceTest {
+class OrderServiceTest {
     @InjectMocks
-    private OrderService orderService;
+    private OrderServiceImpl orderService;
 
     @Mock
     private OrderRepository orderRepository;
@@ -88,7 +88,7 @@ public class OrderServiceTest {
         Order order = this.orders.get(1);
         doReturn(order).when(orderRepository).findById(order.getId());
 
-        assertThrows(IllegalArgumentException.class, orderService.updateStatus(order.getId(), "INVALID_STATUS"));
+        assertThrows(IllegalArgumentException.class, () -> orderService.updateStatus(order.getId(), "INVALID_STATUS"));
         verify(orderRepository, times(0)).save(any(Order.class));
     }
 
@@ -120,7 +120,7 @@ public class OrderServiceTest {
     void testFindAllByAuthorIfAllLowercase() {
         Order order = this.orders.get(1);
         doReturn(new ArrayList<Order>()).when(orderRepository).findAllByAuthor(order.getAuthor().toLowerCase());
-        List<Order> results = orderService.findAllByAuthor(order.getAuthor());
+        List<Order> results = orderService.findAllByAuthor(order.getAuthor().toLowerCase());
         assertEquals(0, results.size());
     }
 

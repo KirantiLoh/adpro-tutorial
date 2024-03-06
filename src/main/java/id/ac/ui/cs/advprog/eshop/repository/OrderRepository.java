@@ -22,7 +22,7 @@ public class OrderRepository {
         }
 
         orderData.add(order);
-        return null;
+        return order;
     }
 
     public Order findById(String id) {
