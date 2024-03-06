@@ -17,7 +17,7 @@ public class Payment {
         this.id = id;
         this.method = method;
         this.paymentData = paymentData;
-        this.status = "WAITING_CONFIRMATION";
+        this.status = "WAITING_PAYMENT";
     }
 
     public void setStatus(String status) {
