@@ -34,3 +34,7 @@ Dalam aspek secure coding, terdapat beberapa *security measures* yang saya terap
    1. Menggabungkan tanggungjawab antar kelas akan menyebabkan sulitnya codebase untuk di-*maintain*.
    2. Dengan tidak menerapkan Interface Segregation, memungkinkan code yang sama diulang berkali-kali (code duplication).
    3. Minimnya *reusability* karena semua bagian saling bergantungan / *tightly coupled* sehingga memanjangkan waktu pengembangan aplikasi.
+
+## Reflection
+1. TDD tidak membantu dalam kasus ini, malah menghambat progress. Hal ini disebabkan untuk membuat flow TDD yang baik, diperlukan jumlah anggota minimal lebih dari 1. Sedangkan pada kasus ini hanya sendirian sehingga menghambat.
+2. Semua prinsip telah dipenuhi kecuali aspek Fast (F). Hal ini disebabkan oleh kurangnya orang untuk membuat flow TDD yang cepat.
